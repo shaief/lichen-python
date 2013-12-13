@@ -2,7 +2,7 @@
 
 A software that analyzes image(s) and calculates the cover percentages of lichen on rocks according to colors.
 
-![Alt text](https://github.com/shaief/lichen-python/blob/master/Lichen.jpg "Optional title")
+![Alt text](https://raw.github.com/shaief/lichen-python/master/Lichen.jpg "Lichen from Wikipedia")
 
 ## Dependencies
 PIL >= 1.1.7
