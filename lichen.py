@@ -18,12 +18,11 @@ def analyze_image(user_image, low_threshold, high_threshold):
     
     ndarr = np.array(lichen_blurred, dtype = float)
     
-    print ndarr
+    # print ndarr
     
     ndarr[ndarr<low_threshold] = 0
     ndarr[ndarr > high_threshold] = 0
     ndarr[ndarr != 0] = 255
-    
     
     print ndarr
     counter = 0
@@ -35,11 +34,13 @@ def analyze_image(user_image, low_threshold, high_threshold):
             
     print "counter: " + str(counter)
     print "lichen counter: " + str(lichen_counter)
-    
-    print "percentage: " + str(1.0*lichen_counter/counter)
+    percentage = 1.0*lichen_counter/counter
+    print "percentage: " + str(percentage)
     
     lichen_threshold = Image.fromarray(ndarr)
     lichen_threshold.show()
+
+    return counter, lichen_counter, percentage
 
 def user_interaction():
     ''' this function deals with user's requests'''
@@ -61,11 +62,28 @@ def user_interaction():
         print "(s) - single image"
         single_dir = "S"
     if single_dir.upper() == 'S':
-        print "Please write a file name to analysis: "
+        print "Please write a file name to analyze: "
         user_image = raw_input()
         if not user_image:
             print "Lichen.jpg"
             user_image = "Lichen.jpg"    
         analyze_image(user_image, low_threshold, high_threshold)
+    if single_dir.upper() == 'D':
+        counter_list = []
+        lichen_list = []
+        percentage_list = []
+        print "Please write directory path to analyze: "
+        user_dir = raw_input()
+        os.chdir(user_dir)
+        for files in os.listdir("."):
+            if files.endswith(".jpg") or files.endswith(".JPG"):
+                print files
+                c,l,p = analyze_image(files, low_threshold, high_threshold)
+                counter_list.append(c)
+                lichen_list.append(l)
+                percentage_list.append(p)
+        print counter_list
+        print lichen_list
+        print percentage_list
 
 user_interaction()
