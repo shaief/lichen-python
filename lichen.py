@@ -57,13 +57,14 @@ def user_interaction():
         high_threshold = DEFAULT_HIGH
     low_threshold = int(low_threshold)
     high_threshold = int(high_threshold)
-    print "Would you like to work on a (s)ingle image or on a (d)irectory?: (default - single image)"
+    print "Would you like to work on a (s)ingle image or on a (d)irectory?: "
+    print "(default - single image)"
     single_dir = raw_input()
     if not single_dir:
         print "(s) - single image"
         single_dir = "S"
     if single_dir.upper() == 'S':
-        print "Please write a file name to analyze: "
+        print "Please write a file name to analyze (default {}): ".format(DEFAULT_IMAGE)
         user_image = raw_input()
         if not user_image:
             print DEFAULT_IMAGE
@@ -74,11 +75,12 @@ def user_interaction():
         lichen_list = []
         percentage_list = []
         print "Please write directory path to analyze: "
-        user_dir = raw_input()
-        os.chdir(user_dir)
+        print "(default path: {})".format(DEFAULT_DIRECTORY)
+        user_directory = raw_input()
         if not user_directory:
             print DEFAULT_DIRECTORY
             user_directory = DEFAULT_DIRECTORY
+        os.chdir(user_directory)
         for files in os.listdir(user_directory):
             if files.endswith(".jpg") or files.endswith(".JPG"):
                 print files
