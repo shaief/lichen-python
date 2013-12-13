@@ -2,6 +2,7 @@ import os
 from PIL import Image
 import numpy as np
 import ImageFilter
+from DEFAULTS import *
 
 def analyze_image(user_image, low_threshold, high_threshold):
     # lichen_im = Image.open("Lichen.jpg")
@@ -48,12 +49,12 @@ def user_interaction():
     low_threshold = raw_input()
     if not low_threshold:
         print "150"
-        low_threshold = 150
+        low_threshold = DEFAULT_LOW
     print "high (0-255): "
     high_threshold = raw_input()
     if not high_threshold:
         print "200"
-        high_threshold = 200
+        high_threshold = DEFAULT_HIGH
     low_threshold = int(low_threshold)
     high_threshold = int(high_threshold)
     print "Would you like to work on a (s)ingle image or on a (d)irectory?: (default - single image)"
@@ -65,8 +66,8 @@ def user_interaction():
         print "Please write a file name to analyze: "
         user_image = raw_input()
         if not user_image:
-            print "Lichen.jpg"
-            user_image = "Lichen.jpg"    
+            print DEFAULT_IMAGE
+            user_image = DEFAULT_IMAGE    
         analyze_image(user_image, low_threshold, high_threshold)
     if single_dir.upper() == 'D':
         counter_list = []
@@ -75,7 +76,10 @@ def user_interaction():
         print "Please write directory path to analyze: "
         user_dir = raw_input()
         os.chdir(user_dir)
-        for files in os.listdir("."):
+        if not user_directory:
+            print DEFAULT_DIRECTORY
+            user_directory = DEFAULT_DIRECTORY
+        for files in os.listdir(user_directory):
             if files.endswith(".jpg") or files.endswith(".JPG"):
                 print files
                 c,l,p = analyze_image(files, low_threshold, high_threshold)
