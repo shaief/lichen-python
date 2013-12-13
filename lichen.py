@@ -45,7 +45,7 @@ def analyze_image(user_image, low_threshold, high_threshold):
 
 def user_interaction():
     ''' this function deals with user's requests'''
-    print "Plese enter thresholds (default values - (150, 200)):\n low (0-255): "
+    print "Plese enter thresholds (default values - ({}, {})):\n low (0-255): ".format(DEFAULT_LOW, DEFAULT_HIGH)
     low_threshold = raw_input()
     if not low_threshold:
         print "150"
