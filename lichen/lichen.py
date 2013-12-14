@@ -1,7 +1,8 @@
 import os
 from PIL import Image
+from PIL import ImageFilter
+
 import numpy as np
-import ImageFilter
 from DEFAULTS import *
 
 def analyze_image(user_image, low_threshold, high_threshold):
