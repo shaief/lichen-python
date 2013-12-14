@@ -1,4 +1,8 @@
-from distutils.core import setup
+import os
+from setuptools import setup
+
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
     name='Lichen',
@@ -8,11 +12,8 @@ setup(
     packages=['lichen', 'lichen.test'],
     #url='http://pypi.python.org/pypi/TowelStuff/',
     license='LICENSE.txt',
-    description='A small software to analyze percentage of lichen seen on a rock from an image or a sequence of images',
-    #long_description=open('README.txt').read(),
-    install_requires=[
-        "PIL==1.1.7",
-        "numpy==1.8.0",
-        "wsgiref==0.1.2",
-    ],
-)
+    description=("A small software to analyze percentage of lichen seen on a rock"
+                "from an image or a sequence of images"),
+    keywords="lichen image analyzer"
+    long_description=read('README.md'),
+    install_requires=read('requirements.txt')
