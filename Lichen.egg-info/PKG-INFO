@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: Lichen
+Version: 0.1.0
+Summary: A small software to analyze percentage of lichen seen on a rockfrom an image or a sequence of images
+Home-page: UNKNOWN
+Author: Shai Efrati
+Author-email: shaief@gmail.com
+License: LICENSE.txt
+Description: UNKNOWN
+Keywords: lichen image analyzer
+Platform: UNKNOWN
