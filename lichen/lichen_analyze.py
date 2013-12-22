@@ -35,10 +35,10 @@ def analyze_image(user_image, low_threshold, high_threshold):
     
     lichen_threshold = Image.fromarray(ndarr)
       #show images:
-#     lichen_im.show()
-#     lichen_converted.show()
-#     lichen_blurred.show()
-#     lichen_threshold.show()
+    lichen_im.show()
+    lichen_converted.show()
+    lichen_blurred.show()
+    lichen_threshold.show()
 
     return counter, lichen_counter, percentage
 

@@ -14,7 +14,8 @@ python lichen.py
 Functions
 ---------
 analyze_image(user_image, low_threshold, high_threshold) -> counter, lichen_counter, percentage
-user_interaction() -> null
+run_single(user_image, lower_th, upper_th) -> csv
+run_directory(user_directory, lower_th, upper_th) -> csv
 
 Notes
 -----
