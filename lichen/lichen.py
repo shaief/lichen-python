@@ -47,7 +47,7 @@ except ImportError:
 # DEFAULTS.py contains all the defaults for the analysis.
 from DEFAULTS import *
 try:
-    from lichen_analyze import *
+    from lichen_analyze import run_single, run_directory
 except:
     exit('Lichen main module - lichen_analyze.py is missing...')
 
