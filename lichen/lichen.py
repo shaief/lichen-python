@@ -38,6 +38,16 @@ Options:
 """
 
 import os
+import csv
+try:
+    from PIL import Image, ImageFilter
+except:
+    exit('Lichen requires Pillow. Please install it using pip install Pillow')
+try:
+    import numpy as np
+except:
+    exit('Lichen requires numpy. Please install it using pip install numpy')
+# DEFAULTS.py contains all the defaults for the analysis.
 
 try:
     from docopt import docopt

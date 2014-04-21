@@ -8,9 +8,6 @@ try:
     import numpy as np
 except:
     exit('Lichen requires numpy. Please install it using pip install numpy')
-# DEFAULTS.py contains all the defaults for the analysis.
-from DEFAULTS import *
-
 
 def analyze_image(user_image, low_threshold, high_threshold):
     '''
@@ -22,7 +19,7 @@ def analyze_image(user_image, low_threshold, high_threshold):
     lichen_converted = lichen_im.convert('L')
     lichen_blurred = lichen_converted.filter(ImageFilter.BLUR)
     ndarr = np.array(lichen_blurred, dtype = float)
-    ndarr[ndarr<low_threshold] = 0
+    ndarr[ndarr < low_threshold] = 0
     ndarr[ndarr > high_threshold] = 0
     ndarr[ndarr != 0] = 255
     counter = 0
