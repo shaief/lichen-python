@@ -48,8 +48,8 @@ def run_single(user_image, lower_th, upper_th):
     out.write('Image name; Percentages\n')
     out.write('%s; %1.3f\n' % (user_image, p))
     out.close()
-    print "Done analyzing {} with thresholds {}-{}".format(user_image, lower_th, upper_th) 
-    print "check out {} to see the results".format(user_csv)
+    print("Done analyzing {} with thresholds {}-{}".format(user_image, lower_th, upper_th))
+    print("check out {} to see the results".format(user_csv))
        
 def run_directory(user_directory, lower_th, upper_th):
     ''' this function deals with a directory of images'''
@@ -59,25 +59,25 @@ def run_directory(user_directory, lower_th, upper_th):
     percentage_list = []
     os.chdir(user_directory)
     
-    print "Please enter file name to save (*.csv): "
-    print "(default file: {})".format(DEFAULT_CSV)
+    print("Please enter file name to save (*.csv): ")
+    print("(default file: {})".format(DEFAULT_CSV))
     user_csv = raw_input()
     if not user_csv:
-        print DEFAULT_CSV
+        print(DEFAULT_CSV)
         user_csv = DEFAULT_CSV
     
     for files in os.listdir(user_directory):
         if files.endswith(".jpg") or files.endswith(".JPG"):
-            print files
+            print(files)
             c,l,p = analyze_image(files, lower_th, upper_th)
             counter_list.append(c)
             lichen_list.append(l)
             percentage_list.append(p)
             image_list.append(files)
-#     print counter_list
-#     print lichen_list
-#     print percentage_list
-#     print image_list
+#     print(counter_list)
+#     print(lichen_list)
+#     print(percentage_list)
+#     print(image_list)
     
     # create a list of file names and results
     data = []
@@ -91,5 +91,5 @@ def run_directory(user_directory, lower_th, upper_th):
     for i,j in enumerate(data[0][:]):
         out.write('%s; %1.3f\n' % (data[0][i],data[1][i]))
     out.close()
-    print "Done analyzing {} with thresholds {}-{}".format(user_directory, lower_th, upper_th)
-    print "check out {}{} to see the results".format(user_directory, user_csv)
+    print("Done analyzing {} with thresholds {}-{}".format(user_directory, lower_th, upper_th))
+    print("check out {}{} to see the results".format(user_directory, user_csv))

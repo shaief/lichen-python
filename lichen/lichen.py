@@ -47,30 +47,24 @@ try:
     import numpy as np
 except:
     exit('Lichen requires numpy. Please install it using pip install numpy')
-# DEFAULTS.py contains all the defaults for the analysis.
 
 try:
     from docopt import docopt
 except ImportError:
     exit('Lichen requires docopt. Please install it using pip install docopt')
 
-# DEFAULTS.py contains all the defaults for the analysis.
 from DEFAULTS import *
-try:
-    from lichen_analyze import run_single, run_directory
-except:
-    exit('Lichen main module - lichen_analyze.py is missing...')
+from lichen_analyze import run_single, run_directory
 
 if __name__ == '__main__':
     args = docopt(__doc__, version='0.1.0')
-#     print(args)
     if args['defaults']:
         if args['single'] or args['s']:
             run_single(DEFAULT_IMAGE, DEFAULT_LOW, DEFAULT_HIGH)
         if args['directory'] or args['d']:
             run_directory(DEFAULT_DIRECTORY, DEFAULT_LOW, DEFAULT_HIGH)
     else:
-        if args['--single'] <> None:
+        if args['--single']:
             run_single(args['--single'], args['--lower'], args['--upper'])
-        if args['--directory'] <> None:
+        if args['--directory']:
             run_directory(args['--directory'], args['--lower'], args['--upper'])
